@@ -17,7 +17,8 @@ public class RegistrationService {
     private final UserRepository userRepository;
 
     private final UserValidationService userValidationService;
-
+    
+    // Constants representing registration outcomes for success and failure.
     private static final Boolean registration_successful = true;
     private static final Boolean registration_unsuccessful = false;
 
@@ -26,9 +27,11 @@ public class RegistrationService {
         String username = userRequest.getData().getUsername();
         String password = userRequest.getData().getPassword();
         
+        // Validate the username(check if valid)
         Boolean validation = userValidationService.validateUser(username);
 
         if(validation){
+            // Create a new user entity to be saved in the repository.
             final User user = new User();
             user.setUsername(username);
             user.setPassword(password);

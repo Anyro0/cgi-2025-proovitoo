@@ -12,30 +12,27 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserValidationService {
 
-
+	// Constants for error messages and return values
 	private static final String username_already_exists = "username_already_exists";
 	private static final Boolean username_does_not_exit = true;
 
 	private final UserRepository userRepository;
 
-	public boolean validateUser(String username) {
 
+	public boolean validateUser(String username) {
 		return checkUsername(username);
 	}
 
 	private boolean checkUsername(String username) {
 
-		final boolean existsByUsername = userRepository.existsByUsername(username);
+		// Check if the username already exists in the database
+        final boolean existsByUsername = userRepository.existsByUsername(username);
 
-		if (existsByUsername) {
+        if (existsByUsername) {
+            log.warn("{} is already being used!", username); 
+            throw new RuntimeException(username_already_exists);
+        }
 
-			log.warn("{} is already being used!", username);
-			
-			throw new RuntimeException(username_already_exists);
-		}
-		
-		return username_does_not_exit;
-
-	}
-
+        return username_does_not_exit;
+    }
 }

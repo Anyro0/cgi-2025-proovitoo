@@ -21,20 +21,21 @@ public class CustomAuthentication implements AuthenticationProvider{
     
     private UserRepository userRepository;
 
-    @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        // Extract the username and password from the authentication object
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
+        // Find the user by username from the repository
         Optional<User> optionalUser = Optional.of(userRepository.findByUsername(username));
-        
+
+        // Check if the user exists
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
 
+            // Validate the password
             if (password.equals(user.getPassword())) {
-
                 return new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
-
             } else {
                 throw new BadCredentialsException("Invalid password");
             }
@@ -43,9 +44,8 @@ public class CustomAuthentication implements AuthenticationProvider{
         }
     }
 
-    @Override
+    //This method checks if this provider supports the specified authentication token class.
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
-    
 }

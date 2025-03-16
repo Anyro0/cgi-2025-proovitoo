@@ -20,13 +20,16 @@ public class LoginService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
+    //trys to login using provided username and password
     public String login(UserRequest userRequest){
 
         final String username = userRequest.getData().getUsername();
 		final String password = userRequest.getData().getPassword();
-        
+
+        //authentication
         final UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, password);
         try {
+            //if authentication is successful return a token
             authenticationManager.authenticate(usernamePasswordAuthenticationToken);
             String token = jwtTokenProvider.generateToken(username);
             return token;
