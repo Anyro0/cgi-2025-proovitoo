@@ -32,3 +32,27 @@ build/
 ### VS Code ###
 .vscode/
 .DS_Store
+
+
+flight-frontend/node_modules
+
+# Output
+flight-frontend/.output
+flight-frontend/.vercel
+flight-frontend/.svelte-kit
+flight-frontend//build
+
+# OS
+flight-frontend/.DS_Store
+flight-frontend/Thumbs.db
+
+# Env
+flight-frontend/.env
+flight-frontend/.env.*
+flight-frontend/!.env.example
+flight-frontend/!.env.test
+
+# Vite
+flight-frontend/vite.config.js.timestamp-*
+flight-frontend/vite.config.ts.timestamp-*
+
