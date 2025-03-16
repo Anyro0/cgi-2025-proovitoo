@@ -22,7 +22,7 @@ public class RegistrationController {
         if (registration){
             return "User registered successfully";
         } else {
-            return "User registeration successfull";
+            return "User registeration unsuccessfull";
         }
         
     }
