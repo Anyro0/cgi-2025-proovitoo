@@ -8,7 +8,7 @@
 Kood on kirjutatud kasutades Spring Boot(backend)
 
 ### Backendi Käivitamine:
-- Minge juurkausta ja paigaldage sõltuvused: mvn install
+- Minge juurkausta ja paigaldage sõltuvused(dependency): mvn install
 - Rakenduse käivitamiseks kasutage järgmist käsku: mvn spring-boot:run
 
 ### Töö Aja Hinnang
