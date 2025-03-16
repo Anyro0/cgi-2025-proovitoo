@@ -1,4 +1,6 @@
 package com.Anyro0.flight.controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +19,12 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @PostMapping
-    public String registerUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest) {
         Boolean registration = registrationService.register(userRequest);
         if (registration){
-            return "User registered successfully";
+            return ResponseEntity.ok("Login successful!");
         } else {
-            return "User registeration unsuccessfull";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists");
         }
         
     }

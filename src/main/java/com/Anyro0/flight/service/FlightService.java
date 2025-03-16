@@ -16,8 +16,10 @@ import com.Anyro0.flight.repository.FlightRepository;
 import com.Anyro0.flight.response.FlightDTO;
 import com.Anyro0.flight.response.FlightResponse;
 
+import lombok.extern.slf4j.Slf4j;
 
 
+@Slf4j
 @Service
 public class FlightService {
 
@@ -50,7 +52,7 @@ public class FlightService {
                 
                 return flightRepository.findAll();
             } else {
-                System.out.println("No flights found in the API response");
+                log.info("No flights found in the API response");
                 return flightRepository.findAll();
             }
 
