@@ -1,5 +1,6 @@
 package com.Anyro0.flight.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,9 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "seat_row")
     private int row;
+    
     private int seatNumber;
     private boolean isOccupied;
     private boolean isWindowSeat;
