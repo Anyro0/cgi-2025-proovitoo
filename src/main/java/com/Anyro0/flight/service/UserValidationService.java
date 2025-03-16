@@ -14,15 +14,16 @@ public class UserValidationService {
 
 
 	private static final String username_already_exists = "username_already_exists";
+	private static final Boolean username_does_not_exit = true;
 
 	private final UserRepository userRepository;
 
-	public void validateUser(String username) {
+	public boolean validateUser(String username) {
 
-		checkUsername(username);
+		return checkUsername(username);
 	}
 
-	private void checkUsername(String username) {
+	private boolean checkUsername(String username) {
 
 		final boolean existsByUsername = userRepository.existsByUsername(username);
 
@@ -32,6 +33,8 @@ public class UserValidationService {
 			
 			throw new RuntimeException(username_already_exists);
 		}
+		
+		return username_does_not_exit;
 
 	}
 
