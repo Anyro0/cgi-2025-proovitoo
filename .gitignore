@@ -33,7 +33,7 @@ build/
 .vscode/
 .DS_Store
 
-
+/node_modules
 flight-frontend/node_modules
 
 # Output
